@@ -1,25 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Navbar from './components/Navbar';
+import Result from './components/Result'
+import Dashboard from './components/Dashboard';
+import DataSaveForm from './components/DataSaveForm';
+import Error from './components/Error';
+import About from './components/About';
+import Succes from './components/Succes';
+import Demo from './components/Drawer';
+import Billcontext from './Context/Data/BillState'
+import {
+  createBrowserRouter,
+  Outlet
+} from "react-router-dom";
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Billcontext>
+    <Navbar></Navbar>
+    <Outlet />
+    </Billcontext>
+    </>
   );
 }
 
-export default App;
+const appRouter = createBrowserRouter([
+  {
+      path: '/',
+      element: <App/>,
+      errorElement: <Error />,
+      children: [
+          {
+              path: '/',
+              element: <Dashboard />
+          },
+          {
+              path: '/Result',
+              element: <Result />
+          },
+          {
+              path: '/DataSaveForm',
+              element: <DataSaveForm />
+          },
+          {
+              path: '/About',
+              element: <About />
+          },
+          {
+              path: '/Succes',
+              element: <Succes />
+          },
+          {
+              path: '/demo',
+              element: <Demo />
+          }
+      ]
+    }
+]);
+
+export default appRouter;
