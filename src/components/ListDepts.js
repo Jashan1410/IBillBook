@@ -1,34 +1,44 @@
-import React , { useState , useEffect } from 'react'
-import { EditOutlined, EllipsisOutlined, DeleteOutlined } from '@ant-design/icons';
-import {Avatar, Card, Skeleton , Col } from 'antd';
+import React , {useContext} from 'react'
+import { Avatar, Card, Skeleton , Col } from 'antd';
+import BillContext from '../Context/Data/BillContext'
 
 function Departments(props) {
 
-    const Data  = props.Data
-    const { Meta } = Card;
-    const [description, setdescription] = useState(null);
-    useEffect(() => {
-        var DepAmount =  Data.Load / 100 * props.Amount
-        setdescription("Your payable amount is Rs " + DepAmount)
-    }, [ Data.Load , props.Amount ]);
+  const Contextdata = useContext(BillContext);
+  const { Amount } = Contextdata ;
 
+    const { Data } = props ;
+    const { Meta } = Card;
+
+    function dis(text) {
+        var amo = text/100*Amount.RS
+        var rtext = "Amount Payable is ".concat(amo);
+        return rtext
+    }
 
   return (
     <>
-        <Col>
-            <Card style={{ width: 300 }} actions={[ <DeleteOutlined />,
-            <EditOutlined key="edit" />,
-            <EllipsisOutlined key="ellipsis" />,
-            ]}
-            >
-            <Skeleton loading={false} avatar active>
-                <Meta avatar={<Avatar src="https://joesch.moe/api/v1/random?key=2" />}
-                title={Data.name}
-                description={description}
-                />
-            </Skeleton>
-            </Card>
-        </Col>
+
+        {(Data.msg === "" &&  Data.data.map((Data) =>
+
+                    <Col key={Data.id}>
+                    <Card className=' border-2 border-black' style={{ width: 300 }}  >
+                    <Skeleton loading={false} avatar active>
+                        <Meta avatar={<Avatar src="https://joesch.moe/api/v1/random?key=2" />}
+                        title={Data.name.toUpperCase()}
+                        description={dis(Data.age) }
+                        />
+                    </Skeleton>
+                    </Card>
+                    </Col>
+            ))
+             ||
+            (
+                    <div className="container my-5">
+                    <h2>{Data.msg}</h2>
+                    </div> 
+            ) 
+        }
     </>
   )
 }

@@ -9,13 +9,15 @@ function Save() {
     const { Savefn , Amount } = Contextdata ;
     
     const onFinish = (values) => {
-        Savefn(values , "success")
+        let billAmount = prompt("Please confirm your amount", Amount.RS );
+        if(billAmount){
+            Savefn(values , "success" , billAmount)
+        }
     };
     const onFinishFailed = (values) => {
-        Savefn(values , "error")
+        Savefn(values , "error" , "error")
     };
 
-    const { RangePicker } = DatePicker;
     const [requiredMark, setRequiredMarkType] = useState('optional');
     const onRequiredTypeChange = ({ requiredMarkValue }) => {
         setRequiredMarkType(requiredMarkValue);
@@ -32,16 +34,17 @@ function Save() {
                 <Input  placeholder="Name" />
             </Form.Item>
 
-            <Form.Item  label="Bill Amount" name="Bill Amount" >
-                <InputNumber min={1} max={9999999} disabled={true} defaultValue={Amount.RS} />
+            <Form.Item  label="Bill Amount" required name="Amount" >
+                <InputNumber min={1} max={9999999} initialValues={Amount.RS} />
             </Form.Item>
 
-            <Form.Item label="Bill due data" name="Bill due data" required rules={[ { required: true, message: 'Please select your Bill due data!' , }, ]} >
+
+            <Form.Item label="Bill generate data" name="generate" required rules={[ { required: true, message: 'Please select your Bill due data!' , }, ]} >
                 <DatePicker required />
             </Form.Item>
 
-            <Form.Item label="Bill Period" name="Bill Period" required rules={[ { required: true, message: 'Please select your Bill Period!' , }, ]}>
-                <RangePicker required />
+            <Form.Item label="Bill due data" name="due" required rules={[ { required: true, message: 'Please select your Bill due data!' , }, ]} >
+                <DatePicker required />
             </Form.Item>
 
             <Form.Item >

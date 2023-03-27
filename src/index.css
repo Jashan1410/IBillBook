@@ -6,7 +6,11 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow: hidden;
+}
+
+Link, a {
+  cursor: pointer;
 }
 
 code {
@@ -32,4 +36,18 @@ code {
   display: inline-block;
   margin-right: 8px;
   color: rgba(0, 0, 0, 0.85);
+}
+
+.User {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-image: url("https://img.freepik.com/premium-photo/abstract-blue-background-with-smooth-shining-lines_476363-937.jpg?size=626&ext=jpg&ga=GA1.2.718079425.1678631367");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.loginside {
+  background: url(./login.jpg);
+  background-size: contain;
 }/*# sourceMappingURL=index.css.map */

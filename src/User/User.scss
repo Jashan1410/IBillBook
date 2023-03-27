@@ -1,0 +1,46 @@
+.Item{
+    width: 220px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: white;
+    border-radius: 5px;
+}
+.Userdetail{
+    width: 75%;
+    padding: 3rem;
+}
+.Billdata{
+    width: 80vw;
+    padding: 20px ;
+    margin-top: 60px;
+    background-color: white;
+    border-radius: 8px;
+}
+.Historyt{
+    font-size:xx-large;
+    font-weight: 600;
+    padding-top: 20px;
+}
+
+@media (max-width: 736px) {
+    .Userdetail{
+        width: 90%;
+        padding: 0;
+        padding-top: 50px;
+    }
+    .Item{
+        width: 48%;
+        font-size: 12px;
+    }
+    .Billdata{
+        .flex{
+            flex-direction: column;
+            justify-content: space-evenly;
+            .Item{
+                width: 250px;
+            }
+        }
+    }
+}
