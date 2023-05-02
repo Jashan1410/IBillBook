@@ -38,46 +38,44 @@ function Login(props) {
   return (
     <>
 
-    <div className="bg-red-100 w-screen h-screen flex items-center justify-center">
+        <div className="bg-red-100 w-screen h-screen flex items-center justify-center">
 
-        <div className='flex items-center justify-center'>
-            
-
-            <div className='w-0 bg-red-900 loginside md:w-72' style={{"boxShadow" : "0px 0px 50px #000000" , "height":"28rem"}}></div>
-       
-
-            <div className='border-2 w-72 border-808080 flex flex-col items-center justify-center bg-white' style={{"boxShadow" : "0px 0px 50px #000000" , "height":"28rem"}}>
-
-                <h1 className='font-bold mb-12 mt-2 font-mono'>Welcome Back</h1>
-        
-            <Form className='w-68 h-68 overflow-hidden' form={form} layout="vertical" initialValues={{ requiredMarkValue: requiredMark , remember: true , }}
-                onValuesChange={onRequiredTypeChange} requiredMark={requiredMark} onFinish={onLoginFinish} onFinishFailed={onLoginFinishFailed} autoComplete="off">
+            <div className='flex items-center justify-center'>
                 
-                <Form.Item label="Username" name="Username" required tooltip="This is a required field"  rules={[ { required: true, message: 'Please select your Username!' , }, ]}>
-                    <Input placeholder="input Your Username" />
-                </Form.Item>
+                <div className='w-0 bg-red-900 loginside md:w-72' style={{"boxShadow" : "0px 0px 50px #000000" , "height":"28rem"}}></div>
+        
+                <div className='border-2 w-72 border-808080 flex flex-col items-center justify-center bg-white' style={{"boxShadow" : "0px 0px 50px #000000" , "height":"28rem"}}>
 
-                <Form.Item label="Password" name="Password" required tooltip={{ title: 'Secure password' , icon: <InfoCircleOutlined />,}}  rules={[ { required: true, message: 'Please select your Password!' , }, ]}>
-                    <Input.Password placeholder="input Your Password" />
-                </Form.Item>
+                    <h1 className='font-bold mb-12 mt-2 font-mono'>Welcome Back</h1>
+                
+                    <Form className='w-68 h-68 overflow-hidden' form={form} layout="vertical" initialValues={{ requiredMarkValue: requiredMark , remember: true , }}
+                        onValuesChange={onRequiredTypeChange} requiredMark={requiredMark} onFinish={onLoginFinish} onFinishFailed={onLoginFinishFailed} autoComplete="off">
+                        
+                        <Form.Item label="Username" name="Username" required tooltip="This is a required field"  rules={[ { required: true, message: 'Please select your Username!' , }, ]}>
+                            <Input placeholder="input Your Username" />
+                        </Form.Item>
 
-                <Form.Item name="remember" valuePropName="checked" >
-                    <Checkbox>Remember me</Checkbox>
-                </Form.Item>
+                        <Form.Item label="Password" name="Password" required tooltip={{ title: 'Secure password' , icon: <InfoCircleOutlined />,}}  rules={[ { required: true, message: 'Please select your Password!' , }, ]}>
+                            <Input.Password placeholder="input Your Password" />
+                        </Form.Item>
 
-                <Form.Item>
-                    <Button type="primary" htmlType="submit" className='bg-sky-800 h-8 text-slate-50' onClick={props.oncloseLoginDrawer} >Login</Button>
-                </Form.Item>
+                        <Form.Item name="remember" valuePropName="checked" >
+                            <Checkbox>Remember me</Checkbox>
+                        </Form.Item>
 
-            </Form>
+                        <Form.Item>
+                            <Button type="primary" htmlType="submit" className='bg-sky-800 h-8 text-slate-50' onClick={props.oncloseLoginDrawer} >Login</Button>
+                        </Form.Item>
 
-            <h1 className='mt-6 mb-2'>New user <a className=' text-blue-600'>signup</a></h1>
+                    </Form>
+
+                    <h1 className='mt-6 mb-2'>New user <a className=' text-blue-600'>signup</a></h1>
+
+                </div>
 
             </div>
 
-        </div>
-
-        {contextHolder}
+            {contextHolder}
 
         </div>
 
